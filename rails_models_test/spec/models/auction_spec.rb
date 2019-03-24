@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'shoulda'
 
 RSpec.describe Auction, type: :model do
   subject { 
@@ -33,8 +34,15 @@ RSpec.describe Auction, type: :model do
   end
 
   describe "Associations" do
-    it { should have_one(:buyer) }
-    it { should have_one(:seller) }
+    it "has one buyer" do
+      assc = described_class.reflect_on_association(:buyer)
+      expect(assc.macro).to eq :has_one
+    end
+  
+    it "has one buyer" do
+      assc = described_class.reflect_on_association(:buyer)
+      expect(assc.macro).to eq :has_one
+    end
   end
 
 end
