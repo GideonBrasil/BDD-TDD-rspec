@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190324160817) do
+ActiveRecord::Schema.define(version: 20190324162747) do
 
   create_table "auctions", force: :cascade do |t|
     t.datetime "start_date"
@@ -22,10 +22,14 @@ ActiveRecord::Schema.define(version: 20190324160817) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.integer "buyer_id"
+    t.integer "seller_id"
     t.string "password"
-    t.string "emial"
+    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["buyer_id"], name: "index_users_on_buyer_id"
+    t.index ["seller_id"], name: "index_users_on_seller_id"
   end
 
 end

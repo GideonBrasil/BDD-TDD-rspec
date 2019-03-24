@@ -32,4 +32,9 @@ RSpec.describe Auction, type: :model do
     expect(subject).to_not be_valid
   end
 
+  describe "Associations" do
+    it { should have_one(:buyer) }
+    it { should have_one(:seller) }
+  end
+
 end
